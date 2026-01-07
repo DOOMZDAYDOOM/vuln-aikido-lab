@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Vuln Aikido Lab</h1>
+  <p>This app is intentionally vulnerable. Use it to evaluate scanners.</p>
+
+  <div class="card">
+    <h3>Quick creds</h3>
+    <ul>
+      <li><code>alice / alice123</code></li>
+      <li><code>bob / bob123</code></li>
+      <li><code>admin / admin123</code></li>
+    </ul>
+  </div>
+
+  <h2>Posts</h2>
+  {% for p in posts %}
+    <div class="card">
+      <strong>{{ p["title"] }}</strong>
+      <div>By {{ p["author"] }} at {{ p["created_at"] }}</div>
+      <p>{{ p["body"] }}</p>
+    </div>
+  {% endfor %}
+{% endblock %}
