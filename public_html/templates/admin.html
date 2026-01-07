@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Admin</h1>
+  <p>Renders user bios unsafely (stored XSS triggers here).</p>
+
+  <div class="card">
+    <h3>Users</h3>
+    <table>
+      <thead><tr><th>Username</th><th>Admin</th><th>Bio (unsafe render)</th></tr></thead>
+      <tbody>
+        {% for u in users %}
+          <tr>
+            <td>{{ u["username"] }}</td>
+            <td>{{ u["is_admin"] }}</td>
+            <td>{{ u["bio"] | safe }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Recent transfers</h3>
+    <table>
+      <thead><tr><th>ID</th><th>From</th><th>To</th><th>Amount</th><th>By</th><th>At</th></tr></thead>
+      <tbody>
+        {% for t in transfers %}
+          <tr>
+            <td>{{ t["id"] }}</td>
+            <td>{{ t["from_account"] }}</td>
+            <td>{{ t["to_account"] }}</td>
+            <td>{{ t["amount"] }}</td>
+            <td>{{ t["created_by"] }}</td>
+            <td>{{ t["created_at"] }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

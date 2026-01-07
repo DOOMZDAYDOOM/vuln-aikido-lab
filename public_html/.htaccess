@@ -1,0 +1,3 @@
+PassengerEnabled on
+PassengerAppRoot /home/YOUR_CPANEL_USERNAME/public_html
+PassengerPython /usr/bin/python3

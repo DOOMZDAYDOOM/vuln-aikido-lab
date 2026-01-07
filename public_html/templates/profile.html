@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Profile</h1>
+
+  <div class="card">
+    <h3>Bio (stored raw)</h3>
+    <form method="post">
+      <textarea name="bio">{{ user["bio"] }}</textarea>
+      <button type="submit" style="margin-top:12px;">Save</button>
+    </form>
+    <p>Note: this is intentionally unsafe and will render in <code>/admin</code>.</p>
+  </div>
+
+  <div class="card">
+    <h3>Your accounts</h3>
+    {% if accounts %}
+      <table>
+        <thead><tr><th>Account ID</th><th>Balance</th></tr></thead>
+        <tbody>
+          {% for a in accounts %}
+            <tr><td>{{ a["id"] }}</td><td>{{ a["balance"] }}</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <p>No accounts.</p>
+    {% endif %}
+  </div>
+{% endblock %}

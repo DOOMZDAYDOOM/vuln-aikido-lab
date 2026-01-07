@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Transfer</h1>
+  {% if error %}<p class="error">{{ error }}</p>{% endif %}
+
+  <div class="card">
+    <p>Intentionally vulnerable: you can transfer from any <code>from_account</code> ID.</p>
+    <form method="post">
+      <label>From account ID</label>
+      <input type="number" name="from_account" />
+      <label>To account ID</label>
+      <input type="number" name="to_account" />
+      <label>Amount</label>
+      <input type="number" name="amount" value="100" />
+      <button type="submit" style="margin-top:12px;">Transfer</button>
+    </form>
+  </div>
+
+  <div class="card">
+    <h3>All accounts (for testing)</h3>
+    <table>
+      <thead><tr><th>ID</th><th>Owner</th><th>Balance</th></tr></thead>
+      <tbody>
+        {% for a in all_accounts %}
+          <tr><td>{{ a["id"] }}</td><td>{{ a["owner_username"] }}</td><td>{{ a["balance"] }}</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}
